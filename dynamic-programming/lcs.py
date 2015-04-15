@@ -3,11 +3,10 @@ string1="""Computer security is security applied to computing devices such as co
 
 string2="""Cybersecurity is the process of applying security measures to ensure confidentiality, integrity, and availability of data. Cybersecurity attempts to assure the protection of assets, which includes data, desktops, servers, buildings, and most importantly, humans. The goal of cybersecurity is to protect data both in transit and at rest. Countermeasures can be put in place in order to increase the security of data. Some of these measures include, but are not limited to, access control, awareness training, audit and accountability, risk assessment, penetration testing, vulnerability management, and security assessment and authorization."""
 
-
 solutions=[]
+
 for i in range(len(string1)+1):
 	solutions.append([-1]*(len(string2)+1))
-	
 
 
 def max(num1,num2):
@@ -18,10 +17,6 @@ def max(num1,num2):
 		
 
 def lcs(ind1,ind2):
-	for i in range(ind1):
-		solutions[i][0]=0
-	for i in range(ind2):
-		solutions[0][i]=0
 	for i in range(1,ind1):
 		for j in range(1,ind2):
 			if i==0 or j==0:
@@ -31,8 +26,6 @@ def lcs(ind1,ind2):
 			else:
 				solutions[i][j]=max(solutions[i-1][j],solutions[i][j-1])
 
-lcs(len(string1)+1,len(string2)+1)
-print solutions[len(string1)][len(string2)]
 def find_string(ind1,ind2):
 	result=""
 	while (ind1>0 and ind2>0):
@@ -45,8 +38,10 @@ def find_string(ind1,ind2):
 				ind2-=1
 			else:
 				ind1-=1
-	print result		
+	return result
+
+lcs(len(string1)+1,len(string2)+1)
+
+print "Length of the Largest common Subsequence is :",solutions[len(string1)][len(string2)]		
 		
-find_string(len(string1),len(string2))
-
-
+print "Largest common Subsequence is :\n",find_string(len(string1),len(string2))
