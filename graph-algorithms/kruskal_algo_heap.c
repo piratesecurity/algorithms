@@ -12,7 +12,8 @@ int global_min,total_sum=0;
 void main()
 	{
 	
-	FILE *graph=fopen("100dens.txt","r");
+	FILE *graph=fopen("graph.txt","r");
+	if (graph==NULL) { printf("graph File not found :graph.txt ");exit(0);}
 	int n_vertices,length;	
 	fscanf(graph," %d ",&n_vertices);	
 	length=n_vertices*n_vertices;
